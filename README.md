@@ -1,2 +1,3 @@
 # example-anticorona
-3th Team Anticorona Project - 코로나 백신 접종 알리미
+## 3th Team Anticorona Project
+### 코로나 백신 접종 알리미
