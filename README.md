@@ -1,4 +1,4 @@
-# 3rd Team Anticorona Project
+# 3rd Team Project
 ## 코로나 백신 접종 알리미
 
 ### Table of contents
