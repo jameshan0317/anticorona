@@ -66,11 +66,11 @@ public class PolicyHandler{
         System.out.println("\n\n##### listener RegCancelBooking : " + bookCancelled.toJson() + "\n\n");
 
         // RegCancelBooking Logic //
-        if(booked.isMe()){            
+        if(bookCancelled.isMe()){            
             Cancellation cancellation = new Cancellation();
-            cancellation.setBookingId(booked.getBookingId());
-            cancellation.setVaccineId(booked.getVaccineId());
-            cancellation.setUserId(booked.getUserId());
+            cancellation.setBookingId(bookCancelled.getBookingId());
+            cancellation.setVaccineId(bookCancelled.getVaccineId());
+            cancellation.setUserId(bookCancelled.getUserId());
             
             cancellationRepository.save(cancellation);
         }        
