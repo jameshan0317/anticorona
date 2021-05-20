@@ -7,19 +7,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.util.Optional;
 
  @RestController
  public class VaccineController {
 
+     @Autowired
+     VaccineRepository vaccineRepository;
 
-
-@RequestMapping(value = "/vaccines/chkAndModifyStock",
-        method = RequestMethod.GET,
-        produces = "application/json;charset=UTF-8")
-
-public void chkAndModifyStock(HttpServletRequest request, HttpServletResponse response)
-        throws Exception {
-        System.out.println("##### /vaccine/chkAndModifyStock  called #####");
-        }
+     @RequestMapping(value = "/vaccines/chkAndModifyStock",
+             method = RequestMethod.GET,
+             produces = "application/json;charset=UTF-8")
+     public Boolean chkAndModifyStock(HttpServletRequest request, HttpServletResponse response) {
+         Long vaccineId = Long.parseLong(request.getParameter("vaccineId"));
+         Optional<Vaccine> vaccine = this.vaccineRepository.findById(vaccineId);
+         if(vaccine.isPresent())
+             return vaccine.get().canBook();
+         else return true;
+     }
  }

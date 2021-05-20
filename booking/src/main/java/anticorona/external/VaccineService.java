@@ -12,6 +12,6 @@ import java.util.Date;
 public interface VaccineService {
 
     @RequestMapping(method= RequestMethod.POST, path="/vaccines")
-    public void chkAndModifyStock(@RequestBody Vaccine vaccine);
+    public Boolean chkAndModifyStock(@RequestBody Vaccine vaccine);
 
 }
