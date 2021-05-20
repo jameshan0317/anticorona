@@ -11,6 +11,7 @@ public class Injection {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     private Long injectionId;
     private Long bookingId;
     private Long vaccineId;
