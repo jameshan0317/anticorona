@@ -11,17 +11,17 @@ public class Cancellation {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long bookId;
+    private Long bookingId;
     private Long vaccineId;
     private Long userId;
 
 
-    public Long getBookId() {
-        return bookId;
+    public Long getBookingId() {
+        return bookingId;
     }
 
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
     }
     public Long getVaccineId() {
         return vaccineId;
@@ -38,7 +38,6 @@ public class Cancellation {
         this.userId = userId;
     }
 
-
-
+    
 
 }
