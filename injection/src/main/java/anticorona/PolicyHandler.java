@@ -1,6 +1,9 @@
 package anticorona;
 
 import anticorona.config.kafka.KafkaProcessor;
+
+import java.util.Optional;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +47,7 @@ public class PolicyHandler{
         // AcceptCancelBooking Logic //
         
         if(bookCancelled.isMe()){
-            Optional<injection> injectionOptional = injectionRepository.findById(bookCancelled.getBookingId());
+            Optional<Injection> injectionOptional = injectionRepository.findById(bookCancelled.getBookingId());
             Injection injection = injectionOptional.get();
 
             injection.setStatus(bookCancelled.getStatus());
