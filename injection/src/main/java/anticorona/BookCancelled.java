@@ -13,7 +13,7 @@ public class BookCancelled extends AbstractEvent {
         return bookingId;
     }
 
-    public void setBookId(Long bookingId) {
+    public void setBookingId(Long bookingId) {
         this.bookingId = bookingId;
     }
     public Long getVaccineId() {
