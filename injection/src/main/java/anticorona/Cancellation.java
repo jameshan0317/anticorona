@@ -11,6 +11,7 @@ public class Cancellation {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     private Long bookingId;
     private Long vaccineId;
     private Long userId;
