@@ -9,7 +9,7 @@ public class BookCancelled extends AbstractEvent {
     private Long delbook;
     private Long addBook;
 
-    public Long getBookId() {
+    public Long getBookingId() {
         return bookingId;
     }
 
