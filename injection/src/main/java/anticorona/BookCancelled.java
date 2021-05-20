@@ -9,11 +9,11 @@ public class BookCancelled extends AbstractEvent {
     private Long delbook;
     private Long addBook;
 
-    public Long getBookId() {
+    public Long getBookingId() {
         return bookingId;
     }
 
-    public void setBookId(Long bookingId) {
+    public void setBookingId(Long bookingId) {
         this.bookingId = bookingId;
     }
     public Long getVaccineId() {
