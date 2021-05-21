@@ -51,4 +51,8 @@ public class BookCancelled extends AbstractEvent {
     public void setAddBook(Long addBook) {
         this.addBook = addBook;
     }
+
+    public boolean isMe() {
+        return false;
+    }
 }

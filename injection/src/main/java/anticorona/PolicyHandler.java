@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyHandler{
+
     @Autowired
     InjectionRepository injectionRepository;
 
@@ -24,12 +25,14 @@ public class PolicyHandler{
 
         System.out.println("\n\n##### listener AcceptBooking : " + booked.toJson() + "\n\n");
 
-        // AcceptBooking Logic //
+        // 접종예약접수(AcceptBooking) Logic //
         if(booked.isMe()){
             
             Injection injection = new Injection();
-            injection.setBookingId(booked.getBookingId());
-            injection.setStatus("AcceptBooking");
+            injection.setStatus("Booking_Completed");
+            injection.setBookingId(booked.getBookingId());            
+            injection.setVaccineId(booked.getVaccineId());
+            injection.setUserId(booked.getUserId());
 
             injectionRepository.save(injection);
         }
@@ -44,13 +47,13 @@ public class PolicyHandler{
 
         System.out.println("\n\n##### listener AcceptCancelBooking : " + bookCancelled.toJson() + "\n\n");
 
-        // AcceptCancelBooking Logic //
+        // 접종예약취소(AcceptCancelBooking) Logic //
         
         if(bookCancelled.isMe()){
             Optional<Injection> injectionOptional = injectionRepository.findById(bookCancelled.getBookingId());
             Injection injection = injectionOptional.get();
 
-            injection.setStatus(bookCancelled.getStatus());
+            injection.setStatus("Booking_Cancelled");
             injectionRepository.save(injection);
         }
     }
@@ -65,9 +68,10 @@ public class PolicyHandler{
 
         System.out.println("\n\n##### listener RegCancelBooking : " + bookCancelled.toJson() + "\n\n");
 
-        // RegCancelBooking Logic //
+        // 접종예약취소 등록(RegCancelBooking) Logic //
         if(bookCancelled.isMe()){            
             Cancellation cancellation = new Cancellation();
+            
             cancellation.setBookingId(bookCancelled.getBookingId());
             cancellation.setVaccineId(bookCancelled.getVaccineId());
             cancellation.setUserId(bookCancelled.getUserId());
@@ -77,7 +81,6 @@ public class PolicyHandler{
             
     }
 
-    
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString){}

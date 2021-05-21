@@ -18,8 +18,10 @@ public class Injection {
     private Long userId;
     private String status;
 
-    @PostUpdate
-    public void onPostUpdate(){
+    @PostPersist
+    public void onPostPersist(){
+
+        // 접종 완료
         VcCompleted vcCompleted = new VcCompleted();
         BeanUtils.copyProperties(this, vcCompleted);
         vcCompleted.publishAfterCommit();

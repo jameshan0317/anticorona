@@ -39,6 +39,5 @@ public class Cancellation {
         this.userId = userId;
     }
 
-    
 
 }

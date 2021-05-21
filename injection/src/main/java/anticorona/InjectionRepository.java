@@ -8,5 +8,4 @@ public interface InjectionRepository extends PagingAndSortingRepository<Injectio
 
     Injection findByInjectionId(Long injectionId);
     
-    
 }

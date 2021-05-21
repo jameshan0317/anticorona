@@ -43,4 +43,8 @@ public class Booked extends AbstractEvent {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public boolean isMe() {
+        return false;
+    }
 }
