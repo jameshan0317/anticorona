@@ -28,8 +28,8 @@ public class Booking {
 
         anticorona.external.Vaccine vaccine = new anticorona.external.Vaccine();
         // mappings goes here
-        Application.applicationContext.getBean(anticorona.external.VaccineService.class)
-            .chkAndModifyStock(vaccine);
+        // BookingApplication.applicationContext.getBean(anticorona.external.VaccineService.class)
+        //     .chkAndModifyStock(vaccine);
 
 
     }

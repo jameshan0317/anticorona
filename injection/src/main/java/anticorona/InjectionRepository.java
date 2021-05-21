@@ -1,5 +1,7 @@
 package anticorona;
 
+import java.util.Optional;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -7,5 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface InjectionRepository extends PagingAndSortingRepository<Injection, Long>{
 
     Injection findByInjectionId(Long injectionId);
+
+    Optional<Injection> findByBookingId(Long bookingId);
     
 }

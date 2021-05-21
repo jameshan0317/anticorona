@@ -11,21 +11,21 @@ public class Injection {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
     private Long injectionId;
     private Long bookingId;
     private Long vaccineId;
     private Long userId;
     private String status;
 
-    @PostPersist
-    public void onPostPersist(){
+    @PreUpdate
+    public void onPreUpdate(){
 
-        // 접종 완료
-        VcCompleted vcCompleted = new VcCompleted();
-        BeanUtils.copyProperties(this, vcCompleted);
-        vcCompleted.publishAfterCommit();
-
+        if("Injection_Completed".equals(this.status)){
+            // 접종 완료
+            VcCompleted vcCompleted = new VcCompleted();
+            BeanUtils.copyProperties(this, vcCompleted);
+            vcCompleted.publishAfterCommit();
+        }
 
     }
 
