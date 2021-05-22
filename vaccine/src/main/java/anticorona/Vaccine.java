@@ -11,7 +11,7 @@ public class Vaccine {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long vaccinId;
+    private Long vaccineId;
     private String vcName;
     private Long stock;
     private Long bookQty;
@@ -40,12 +40,12 @@ public class Vaccine {
     }
 
 
-    public Long getVaccinId() {
-        return vaccinId;
+    public Long getVaccineId() {
+        return vaccineId;
     }
 
-    public void setVaccinId(Long vaccinId) {
-        this.vaccinId = vaccinId;
+    public void setVaccineId(Long vaccineId) {
+        this.vaccineId = vaccineId;
     }
     public String getVcName() {
         return vcName;
