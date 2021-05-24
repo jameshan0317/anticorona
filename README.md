@@ -46,3 +46,12 @@
 * 성능
     * 고객은 MyPage에서 본인 예약 상태를 확인 할 수 있어야 한다. (CQRS)
     
+# 분석/설계
+
+## AS-IS 조직 (Horizontally-Aligned)
+![Horizontally-Aligned](https://user-images.githubusercontent.com/2360083/119254418-278d0d80-bbf1-11eb-83d1-494ba83aeaf1.png)
+
+## TO-BE 조직 (Vertically-Aligned)
+![Vertically-Aligned](https://user-images.githubusercontent.com/2360083/119254421-2eb41b80-bbf1-11eb-82fe-53c5dcd366f7.png)
+
+## Event Storming 결과
