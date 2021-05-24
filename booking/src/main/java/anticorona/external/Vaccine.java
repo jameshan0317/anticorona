@@ -2,16 +2,16 @@ package anticorona.external;
 
 public class Vaccine {
 
-    private Long vaccinId;
+    private Long vaccineId;
     private String vcName;
     private Long stock;
     private Long bookQty;
 
-    public Long getVaccinId() {
-        return vaccinId;
+    public Long getVaccineId() {
+        return vaccineId;
     }
-    public void setVaccinId(Long vaccinId) {
-        this.vaccinId = vaccinId;
+    public void setVaccineId(Long vaccineId) {
+        this.vaccineId = vaccineId;
     }
     public String getVcName() {
         return vcName;
