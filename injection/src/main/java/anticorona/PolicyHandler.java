@@ -25,16 +25,16 @@ public class PolicyHandler{
 
         System.out.println("\n\n##### listener AcceptBooking : " + booked.toJson() + "\n\n");
 
-        // 접종예약접수(AcceptBooking) Logic //
-        // if(booked.isMe()){
+        // 접종준비(AcceptBooking) Logic //
+        //if(booked.isMe()){
             Injection injection = new Injection();
-            injection.setStatus("Injection_Ready");
+            injection.setStatus("접종준비");
             injection.setBookingId(booked.getBookingId());            
             injection.setVaccineId(booked.getVaccineId());
             injection.setUserId(booked.getUserId());
 
             injectionRepository.save(injection);
-        // }
+        //}
           
     }
 
@@ -46,17 +46,16 @@ public class PolicyHandler{
 
         System.out.println("\n\n##### listener AcceptCancelBooking : " + bookCancelled.toJson() + "\n\n");
 
-        // 접종예약취소(AcceptCancelBooking) Logic //
-        
-        // if(bookCancelled.isMe()){
+        // 접종예약취소(AcceptCancelBooking) Logic //        
+        //if(bookCancelled.isMe()){
             Optional<Injection> injectionOptional = injectionRepository.findByBookingId(bookCancelled.getBookingId());
             if(injectionOptional.isPresent()){
                 Injection injection = injectionOptional.get();
-                injection.setStatus("Booking_Cancelled");
+                injection.setStatus("예약취소");
                 injectionRepository.save(injection);
             }
             
-        // }
+        //}
     }
 
     @Autowired
@@ -70,7 +69,7 @@ public class PolicyHandler{
         System.out.println("\n\n##### listener RegCancelBooking : " + bookCancelled.toJson() + "\n\n");
 
         // 접종예약취소 등록(RegCancelBooking) Logic //
-        // if(bookCancelled.isMe()){            
+        //if(bookCancelled.isMe()){            
             Cancellation cancellation = new Cancellation();
             
             cancellation.setBookingId(bookCancelled.getBookingId());
@@ -78,7 +77,7 @@ public class PolicyHandler{
             cancellation.setUserId(bookCancelled.getUserId());
             
             cancellationRepository.save(cancellation);
-        // }        
+        //}        
             
     }
 
