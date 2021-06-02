@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
  @RestController
  public class VaccineController {
@@ -15,14 +14,25 @@ import java.util.Optional;
      @Autowired
      VaccineRepository vaccineRepository;
 
-     @RequestMapping(value = "/vaccines/chkAndModifyStock",
-             method = RequestMethod.GET,
-             produces = "application/json;charset=UTF-8")
-     public Boolean chkAndModifyStock(HttpServletRequest request, HttpServletResponse response) {
-         Long vaccineId = Long.parseLong(request.getParameter("vaccineId"));
-         Optional<Vaccine> vaccine = this.vaccineRepository.findById(vaccineId);
-         if(vaccine.isPresent())
-             return vaccine.get().canBook();
-         else return true;
+     @RequestMapping(value = "/vaccines/checkAndBookStock",
+        method = RequestMethod.GET,
+        produces = "application/json;charset=UTF-8")
+    public boolean checkAndBookStock(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("##### /vaccine/checkAndBookStock  called #####");
+
+        boolean status = false;
+
+        Long vaccineId = Long.valueOf(request.getParameter("vaccineId"));
+        
+        Vaccine vaccine = vaccineRepository.findByVaccineId(vaccineId);
+        //예약 가능한지 체크 
+        if(vaccine.getStock() - vaccine.getBookQty() > 0) {
+            //예약 가능하면 예약수량 증가
+            status = true;
+            vaccine.setBookQty(vaccine.getBookQty() + 1);
+            vaccineRepository.save(vaccine);
+        }
+
+        return status;
      }
  }

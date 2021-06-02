@@ -10,9 +10,8 @@ import VaccineManager from "./components/VaccineManager"
 import BookingManager from "./components/BookingManager"
 
 
-import Mypage from "./components/mypage"
+import Mypage from "./components/Mypage"
 import InjectionManager from "./components/InjectionManager"
-import CancellationManager from "./components/CancellationManager"
 
 export default new Router({
     // mode: 'history',
@@ -34,17 +33,12 @@ export default new Router({
             {
                 path: '/mypage',
                 name: 'mypage',
-                component: mypage
+                component: Mypage
             },
             {
                 path: '/Injection',
                 name: 'InjectionManager',
                 component: InjectionManager
-            },
-            {
-                path: '/Cancellation',
-                name: 'CancellationManager',
-                component: CancellationManager
             },
 
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Date;
 
 @Entity
-@Table(name="Vaccine_table")
+@Table(name="Vaccine")
 public class Vaccine {
 
     @Id
@@ -16,27 +16,37 @@ public class Vaccine {
     private Long stock;
     private Long bookQty;
 
+    @Transient
+    private Long previousStock;
+    @Transient
+    private Long previousBookQty;
+
+    @PostLoad
+    public void postLoad(){
+        //Set all previous fields to actual values
+        previousStock = stock;
+        previousBookQty = bookQty;
+    }
+
     @PostPersist
     public void onPostPersist(){
-        VcRegistered vcRegistered = new VcRegistered();
-        BeanUtils.copyProperties(this, vcRegistered);
-        vcRegistered.publishAfterCommit();
-
-
+        Registered registered = new Registered();
+        BeanUtils.copyProperties(this, registered);
+        registered.publishAfterCommit();
     }
 
     @PostUpdate
     public void onPostUpdate(){
-        VcStockAdded vcStockAdded = new VcStockAdded();
-        BeanUtils.copyProperties(this, vcStockAdded);
-        vcStockAdded.publishAfterCommit();
-
-
-        StockModified stockModified = new StockModified();
-        BeanUtils.copyProperties(this, stockModified);
-        stockModified.publishAfterCommit();
-
-
+        if(previousStock < stock){
+            StockAdded stockAdded = new StockAdded();
+            BeanUtils.copyProperties(this, stockAdded);
+            stockAdded.publishAfterCommit();
+        }
+        if(previousBookQty != bookQty){
+            StockModified stockModified = new StockModified();
+            BeanUtils.copyProperties(this, stockModified);
+            stockModified.publishAfterCommit();
+        }
     }
 
 
@@ -77,6 +87,4 @@ public class Vaccine {
     public boolean canBook(){
         return this.stock - this.bookQty > 0;
     }
-
-
 }

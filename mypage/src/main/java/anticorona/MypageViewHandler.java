@@ -41,15 +41,15 @@ public class MypageViewHandler {
 
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenBookCancelled_then_UPDATE_1(@Payload BookCancelled bookCancelled) {
+    public void whenBookingCancelled_then_UPDATE_1(@Payload BookingCancelled bookingCancelled) {
         try {
-            if (!bookCancelled.validate()) return;
+            if (!bookingCancelled.validate()) return;
                 // view 객체 조회
-            Optional<Mypage> mypageOptional = mypageRepository.findByBookId(bookCancelled.getBookingId());
+            Optional<Mypage> mypageOptional = mypageRepository.findByBookId(bookingCancelled.getBookId());
             if( mypageOptional.isPresent()) {
                 Mypage mypage = mypageOptional.get();
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    mypage.setStatus(bookCancelled.getStatus());
+                    mypage.setStatus(bookingCancelled.getStatus());
                 // view 레파지 토리에 save
                 mypageRepository.save(mypage);
             }
@@ -59,33 +59,15 @@ public class MypageViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenBookUpdated_then_UPDATE_2(@Payload BookUpdated bookUpdated) {
+    public void whenCompleted_then_UPDATE_2(@Payload Completed completed) {
         try {
-            if (!bookUpdated.validate()) return;
+            if (!completed.validate()) return;
                 // view 객체 조회
-            Optional<Mypage> mypageOptional = mypageRepository.findByBookId(bookUpdated.getBookingId());
+            Optional<Mypage> mypageOptional = mypageRepository.findByBookId(completed.getBookingId());
             if( mypageOptional.isPresent()) {
                 Mypage mypage = mypageOptional.get();
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    mypage.setStatus(bookUpdated.getStatus());
-                // view 레파지 토리에 save
-                mypageRepository.save(mypage);
-            }
-            
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    @StreamListener(KafkaProcessor.INPUT)
-    public void whenVcCompleted_then_UPDATE_3(@Payload VcCompleted vcCompleted) {
-        try {
-            if (!vcCompleted.validate()) return;
-                // view 객체 조회
-            Optional<Mypage> mypageOptional = mypageRepository.findByBookId(vcCompleted.getBookingId());
-            if( mypageOptional.isPresent()) {
-                Mypage mypage = mypageOptional.get();
-                // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    mypage.setStatus(vcCompleted.getStatus());
+                    mypage.setStatus(completed.getStatus());
                 // view 레파지 토리에 save
                 mypageRepository.save(mypage);
             }

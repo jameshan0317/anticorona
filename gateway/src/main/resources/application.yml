@@ -23,7 +23,7 @@ spring:
         - id: injection
           uri: http://localhost:8084
           predicates:
-            - Path=/injections/**/cancellations/** 
+            - Path=/injections/**,/cancellations/** 
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -58,7 +58,7 @@ spring:
         - id: injection
           uri: http://injection:8080
           predicates:
-            - Path=/injections/**/cancellations/** 
+            - Path=/injections/**,/cancellations/** 
       globalcors:
         corsConfigurations:
           '[/**]':

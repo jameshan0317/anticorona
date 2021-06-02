@@ -1,13 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vaccine
+  name: gateway
   namespace: anticorona
   labels:
-    app: vaccine
+    app: gateway
 spec:
   ports:
     - port: 8080
       targetPort: 8080
+  type: LoadBalancer
   selector:
-    app: vaccine
+    app: gateway

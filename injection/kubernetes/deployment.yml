@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: injection
+  namespace: anticorona
   labels:
     app: injection
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: injection
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: injection
-          image: username/injection:latest
+          image: anticorona.azurecr.io/injection:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -35,3 +36,17 @@ spec:
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 5
+          volumeMounts:
+            - name: volume
+              mountPath: "/mnt/azure"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: injection-disk

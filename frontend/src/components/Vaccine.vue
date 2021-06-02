@@ -24,10 +24,10 @@
     <v-card-text style = "margin-left:-15px; margin-top:10px;">
 
           <div class="grey--text ml-4" v-if="editMode" style = "margin-top:-20px;">
-            <v-text-field type="number" label="VaccinId" v-model="value.vaccinId"/>
+            <v-text-field type="number" label="VaccineId" v-model="value.vaccineId"/>
           </div>
           <div class="grey--text ml-4" v-else>
-            VaccinId :  {{value.vaccinId }}
+            VaccineId :  {{value.vaccineId }}
           </div>
           <div class="grey--text ml-4" v-if="editMode" style = "margin-top:-20px;">
             <v-text-field label="VcName" v-model="value.vcName"/>

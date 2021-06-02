@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vaccine
+  namespace: anticorona
   labels:
     app: vaccine
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: vaccine
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: vaccine
-          image: username/vaccine:latest
+          image: anticorona.azurecr.io/vaccine:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -35,3 +36,17 @@ spec:
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 5
+          volumeMounts:
+            - name: volume
+              mountPath: "/mnt/azure"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: vaccine-disk
