@@ -1,6 +1,25 @@
 # 3rd Team Project
 ## 코로나 백신 접종 알리미
 
+### Repositories
+
+- **게이트웨이** - [https://github.com/dt-3team/gateway.git](https://github.com/dt-3team/gateway.git)
+
+- **백신 관리** - [https://github.com/dt-3team/vaccine.git](https://github.com/dt-3team/vaccine.git)
+
+- **예약 관리** - [https://github.com/dt-3team/booking.git](https://github.com/dt-3team/booking.git)
+
+- **접종 관리** - [https://github.com/dt-3team/injection.git](https://github.com/dt-3team/injection.git)
+
+- **My Page** - [https://github.com/dt-3team/mypage.git](https://github.com/dt-3team/mypage.git)
+
+- **Front End** - [https://github.com/dt-3team/frontend.git](https://github.com/dt-3team/frontend.git)
+
+*전체 소스 받기*
+```
+git clone --recurse-submodules https://github.com/dt-3team/anticorona.git
+```
+
 ### Table of contents
 
 - [서비스 시나리오](#서비스-시나리오)
@@ -55,3 +74,5 @@
 ![Vertically-Aligned](https://user-images.githubusercontent.com/2360083/119254421-2eb41b80-bbf1-11eb-82fe-53c5dcd366f7.png)
 
 ## Event Storming 결과
+
+
