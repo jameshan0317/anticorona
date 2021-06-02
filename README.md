@@ -3,21 +3,19 @@
 
 ### Repositories
 
-- **게이트웨이** - [https://github.com/dt-3team/gateway.git](https://github.com/dt-3team/gateway.git)
+- **게이트웨이** - [https://github.com/jameshan0317/gateway.git](https://github.com/jameshan0317/gateway.git)
 
-- **백신 관리** - [https://github.com/dt-3team/vaccine.git](https://github.com/dt-3team/vaccine.git)
+- **백신 관리** - [https://github.com/jameshan0317/vaccine.git](https://github.com/jameshan0317/vaccine.git)
 
-- **예약 관리** - [https://github.com/dt-3team/booking.git](https://github.com/dt-3team/booking.git)
+- **예약 관리** - [https://github.com/jameshan0317/booking.git](https://github.com/jameshan0317/booking.git)
 
-- **접종 관리** - [https://github.com/dt-3team/injection.git](https://github.com/dt-3team/injection.git)
+- **접종 관리** - [https://github.com/jameshan0317/injection.git](https://github.com/jameshan0317/injection.git)
 
-- **My Page** - [https://github.com/dt-3team/mypage.git](https://github.com/dt-3team/mypage.git)
+- **My Page** - [https://github.com/jameshan0317/mypage.git](https://github.com/jameshan0317/mypage.git)
 
-- **Front End** - [https://github.com/dt-3team/frontend.git](https://github.com/dt-3team/frontend.git)
+- **Front End** - [https://github.com/jameshan0317/frontend.git](https://github.com/jameshan0317/frontend.git)
 
-*전체 소스 받기*
-```
-git clone --recurse-submodules https://github.com/dt-3team/anticorona.git
+
 ```
 
 ### Table of contents
